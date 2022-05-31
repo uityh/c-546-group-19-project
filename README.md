@@ -10,7 +10,7 @@ Since our database is running on Mongo Altas, **there is no need to seed the dat
 1. Visit the following link to use our website live on our Heroku server: https://lit-fortress-77121.herokuapp.com/ . The Heroku server is running off a forked version of the repo. GitHub Forked Repo Link: https://github.com/AlephEleven/c-546-group-19-project
 
 ### Running it Locally
-1. In the project folder terminal, run `npm start` to install node dependencies and start the website in the same command.
+1. In the project folder terminal, run `npm i` to install node dependencies and start the website in the same command.
 2. (Optional) run `npm run seed` to drop the current database and reseed it. However, **this will delete admin accounts**. 
 
 ### View Ready Made Accounts
