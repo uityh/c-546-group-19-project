@@ -7,10 +7,10 @@ Built using HTML, CSS, Bootstrap, Express, Node.js, and MongoDB.
 Since our database is running on Mongo Altas, **there is no need to seed the database**. But we have provided a seed file as a fallback.
 
 ### Using the Live Release
-1. Visit the following link to use our website live on our Heroku server: https://lit-fortress-77121.herokuapp.com/ . The Heroku server is running off a forked version of the repo. GitHub Forked Repo Link: https://github.com/AlephEleven/c-546-group-19-project
+1. Visit the following link to use our website live on our Azure: https://digital-closet.azurewebsites.net/home
 
 ### Running it Locally
-1. In the project folder terminal, run `npm i` to install node dependencies and start the website in the same command.
+1. In the project folder terminal, run `npm i` to install node dependencies and start the website with `node app.js`.
 2. (Optional) run `npm run seed` to drop the current database and reseed it. However, **this will delete admin accounts**. 
 
 ### View Ready Made Accounts
@@ -57,9 +57,6 @@ Upon loading the website, you will see our home page with all the public outfits
 
 ### Admin Accounts
 - Log into admin accounts to delete comments on outfits that do not follow community guidelines.
-
-Note: The images users upload on the live hosted version are stored on the Heroku server. If the server is run locally, you may not be able to see the images stored on Heroku.
-
 
 ## GitHub Link
 https://github.com/LDomadia/c-546-group-19-project
