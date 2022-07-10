@@ -14,9 +14,9 @@ app.set("view engine", "handlebars");
 
 var hbs = exphbs.create({});
 hbs.handlebars.registerHelper("ifIn", function (elem, list, options) {
-  if (typeof list != 'object') return options.inverse(this);
+  if (typeof list != "object") return options.inverse(this);
   let result = options.inverse(this);
-  list.forEach(e => {
+  list.forEach((e) => {
     if (e.toString() == elem.toString()) {
       result = options.fn(this);
     }
@@ -52,7 +52,7 @@ app.use("/uploads", static1);
 
 configRoutes(app);
 
-app.listen(3000, () => {
+app.listen(process.env.port || 3000, () => {
   console.log("We've now got a server!");
   console.log("Your routes will be running on http://localhost:3000");
 });
