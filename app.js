@@ -52,7 +52,7 @@ app.use("/uploads", static1);
 
 configRoutes(app);
 
-app.listen(process.env.port || 3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("We've now got a server!");
   console.log("Your routes will be running on http://localhost:3000");
 });
