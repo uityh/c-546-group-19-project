@@ -1,7 +1,4 @@
-
 (function ($) {
-
-
   //two forms
   var bioForm = $("#bio"),
     bioInput = $("#bio_term"),
@@ -14,37 +11,34 @@
   error.hide();
   error.empty();
 
-
   function checkString(string) {
-    if (!string) throw "must provide text input"
-    if (typeof string !== 'string') throw 'invalid string input';
+    if (!string) throw "must provide text input";
+    if (typeof string !== "string") throw "invalid string input";
     if (string.trim().length === 0)
-      throw 'string cannot be an empty string or just spaces';
+      throw "string cannot be an empty string or just spaces";
     return string;
   }
 
   function checkWebsite(website) {
-    if (!website) throw "must provide store link"
-    if (typeof website !== 'string') throw 'invalid website input';
+    if (!website) throw "must provide store link";
+    if (typeof website !== "string") throw "invalid website input";
     if (website.trim().length === 0)
-      throw 'Id cannot be an empty website or just spaces';
+      throw "Id cannot be an empty website or just spaces";
 
     return website;
   }
 
   function isValidHttpUrl(string) {
     let url;
-    
+
     try {
       url = new URL(string);
     } catch (e) {
       throw e;
     }
-  
+
     return string;
   }
-
-
 
   bioForm.submit(function (event) {
     event.preventDefault();
@@ -64,7 +58,6 @@
 
     event.currentTarget.submit();
   });
-
 
   storeForm.submit(function (event) {
     event.preventDefault();
@@ -87,6 +80,5 @@
     }
 
     event.currentTarget.submit();
-  })
-
+  });
 })(window.jQuery);

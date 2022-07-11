@@ -1,7 +1,9 @@
 const MongoClient = require("mongodb").MongoClient;
 require("dotenv").config();
 
-let url = (!process.env.MONGO_URL) ? process.env.MONGO_URI : process.env.MONGO_URL
+let url = !process.env.MONGO_URL
+  ? process.env.MONGO_URI
+  : process.env.MONGO_URL;
 
 const settings = {
   mongoConfig: {

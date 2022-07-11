@@ -1,25 +1,26 @@
 <article>
 
-     <h1 class="right">Delete Account</h1>
+  <h1 class="right">Delete Account</h1>
 
-    <p id = "message">
-        Are you sure you want to delete account?
-        All Outfits and clothings will be deleted and cannot be restored. 
-        Comments and Likes will not be deleted. 
-    </p>
+  <p id="message">
+    Are you sure you want to delete account? All Outfits and clothings will be
+    deleted and cannot be restored. Comments and Likes will not be deleted.
+  </p>
 
-    <form id="delete" method="POST" action="/profile/delete">
+  <form id="delete" method="POST" action="/profile/delete">
 
-        {{#if deleteE}}
-        <p>{{error}}</p>
-        {{/if}}
-        <button type="submit">confirm</button>
-    </form>
+    {{#if deleteE}}
+      <p>{{error}}</p>
+    {{/if}}
+    <button type="submit">confirm</button>
+  </form>
 
+  <a id="profile" href="/profile">Go back to Profile</a>
 
-    <a id = "profile" href="/profile">Go back to Profile</a>
- 
 </article>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-    crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"
+></script>

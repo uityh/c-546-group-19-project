@@ -1,8 +1,6 @@
-
 (function ($) {
-
   function checkPassword(password) {
-    if (!password) throw "must provide password"
+    if (!password) throw "must provide password";
     if (typeof password !== "string")
       throw "Error: password should be a string";
     if (password.indexOf(" ") >= 0)
@@ -13,8 +11,7 @@
     return password;
   }
 
-
-  //two forms 
+  //two forms
 
   var passForm = $("#cpassword"),
     password1 = $("#current_password"),
@@ -26,7 +23,6 @@
   server2 = $("#server-e2");
   error.hide();
   error.empty();
-
 
   passForm.submit(function (event) {
     event.preventDefault();
@@ -50,7 +46,6 @@
     event.currentTarget.submit();
   });
 
-
   passForm2.submit(function (event) {
     event.preventDefault();
     error.hide();
@@ -62,7 +57,7 @@
       pass = checkPassword(pass);
       pass2 = checkPassword(pass2);
       if (pass !== pass2) {
-        throw "passwords do not match"
+        throw "passwords do not match";
       }
     } catch (e) {
       //alert(e);
@@ -77,6 +72,4 @@
     server2.show();
     event.currentTarget.submit();
   });
-
-
 })(window.jQuery);

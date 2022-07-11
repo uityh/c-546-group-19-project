@@ -1,84 +1,101 @@
 <h1 class="right">{{title}}</h1>
 
-
 <article class="main">
-    <div>
-        <h2>User Info</h2>
-        <dl>
-            <dt>Username</dt>
-            <dd>{{username}}</dd>
-            <dt>Bio</dt>
-            <dd>{{bio}}</dd>
-            <dt>Stores</dt>
-            <dd>
-                {{#if stores.length}}
-                <ul> {{#each stores}}
-                    {{!-- https://www.freecodecamp.org/news/how-to-use-html-to-open-link-in-new-tab/ --}}
-                    <li> <a href="{{this.website}}" target="_blank" rel="noreferrer noopener"> {{this.name}} </a> </li>
-                    {{/each}}
-                </ul>
-                {{/if}}
-            </dd>
-
-            {{#if noStore}}
-            <dd>no stores yet</dd>
-            {{/if}}
-
-        </dl>
-    </div>
-
-
-    <div class="profile">
-
-        <h2>Edit Profile</h2>
-
-        {{#if E}}
-        <p class="error">{{error}}</p>
+  <div>
+    <h2>User Info</h2>
+    <dl>
+      <dt>Username</dt>
+      <dd>{{username}}</dd>
+      <dt>Bio</dt>
+      <dd>{{bio}}</dd>
+      <dt>Stores</dt>
+      <dd>
+        {{#if stores.length}}
+          <ul>
+            {{#each stores}}
+              {{! https://www.freecodecamp.org/news/how-to-use-html-to-open-link-in-new-tab/ }}
+              <li>
+                <a
+                  href="{{this.website}}"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                > {{this.name}} </a>
+              </li>
+            {{/each}}
+          </ul>
         {{/if}}
-        <p class="error" id="error"></p>
+      </dd>
 
+      {{#if noStore}}
+        <dd>no stores yet</dd>
+      {{/if}}
 
-        <h3>Change Bio</h3>
+    </dl>
+  </div>
 
+  <div class="profile">
 
-        <form id="bio" method="POST" action="/profile">
-            <label for="bio_term">Change Bio</label> <br />
-            <textarea id="bio_term" name="bio" rows="4" cols="50" placeholder="Enter bio"> </textarea>
-            <button type="submit">submit</button>
-        </form>
+    <h2>Edit Profile</h2>
 
-        <h3>Add Your Favorite Stores!</h3>
+    {{#if E}}
+      <p class="error">{{error}}</p>
+    {{/if}}
+    <p class="error" id="error"></p>
 
-        {{!-- to add stores --}}
-        <form id="stores" method="POST" action="/profile">
+    <h3>Change Bio</h3>
 
+    <form id="bio" method="POST" action="/profile">
+      <label for="bio_term">Change Bio</label>
+      <br />
+      <textarea
+        id="bio_term"
+        name="bio"
+        rows="4"
+        cols="50"
+        placeholder="Enter bio"
+      > </textarea>
+      <button type="submit">submit</button>
+    </form>
 
-            <label for="store_name">Store Name</label><br />
-            <input type="text" id="store_name" name="storename" placeholder="enter store name">
-            <br />
+    <h3>Add Your Favorite Stores!</h3>
 
+    {{! to add stores }}
+    <form id="stores" method="POST" action="/profile">
 
-            <label for="store_link">Store Link </label><br />
-            <input type="url" id="store_link" name="storelink" placeholder="enter store link">
-            <button type="submit">submit</button>
-        </form>
+      <label for="store_name">Store Name</label><br />
+      <input
+        type="text"
+        id="store_name"
+        name="storename"
+        placeholder="enter store name"
+      />
+      <br />
 
+      <label for="store_link">Store Link </label><br />
+      <input
+        type="url"
+        id="store_link"
+        name="storelink"
+        placeholder="enter store link"
+      />
+      <button type="submit">submit</button>
+    </form>
 
+  </div>
 
-    </div>
+  <h2>Manage Account</h2>
 
-    <h2>Manage Account</h2>
-
-    <br />
-    <a href="/profile/password">Click here to change password</a>
-    <br />
-    <a href="/profile/delete" id="delete-account">Click here to delete account</a>
-
+  <br />
+  <a href="/profile/password">Click here to change password</a>
+  <br />
+  <a href="/profile/delete" id="delete-account">Click here to delete account</a>
 
 </article>
 
-
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-    crossorigin="anonymous"></script>
-<script src='/public/scripts/profile.js'></script>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"
+></script>
+<script src="/public/scripts/profile.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

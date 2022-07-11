@@ -4,8 +4,8 @@ const clothesData = require("../data/clothes");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 const validate = require("../validation/clothes_validation");
-const { ObjectId } = require('mongodb');
-const xss = require('xss');
+const { ObjectId } = require("mongodb");
+const xss = require("xss");
 
 //Middleware
 router.use("/", (req, res, next) => {
@@ -32,7 +32,7 @@ router.route("/").get(async (req, res) => {
       clothesPage: true,
       clothingItems: clothingItems,
       stylesheet: "/public/styles/clothes_styles.css",
-      script: 'public/scripts/clothes_all.js'
+      script: "public/scripts/clothes_all.js",
     });
   } catch (e) {
     res.status(500).render("pages/results/clothings", {
@@ -58,7 +58,7 @@ router
     const data = req.body;
     try {
       if (!data) throw "Error: Nothing was entered";
-      if (!req.session.user) throw 'Error: No user is logged in';
+      if (!req.session.user) throw "Error: No user is logged in";
       data.name = validate.checkTextInput(data.name, "Clothing Name");
       req.file.filename = validate.checkFileInput(req.file.filename, "Image");
       data.type = validate.checkSelectInput(data.type, "Type", [
@@ -102,9 +102,9 @@ router
         xss(req.file.filename),
         xss(data.type),
         xss(data.size),
-        (data["colors-patterns"]),
-        (data.seasons),
-        (data.styles),
+        data["colors-patterns"],
+        data.seasons,
+        data.styles,
         xss(data.brand),
         xss(req.session.user.username)
       );
@@ -128,8 +128,11 @@ router
   .route("/edit/:id")
   .get(async (req, res) => {
     try {
-      if (!ObjectId.isValid(req.params.id)) throw "Error: Clothing Item id is not valid";
-      const clothingItem = await clothesData.getClothingItemById(xss(req.params.id));
+      if (!ObjectId.isValid(req.params.id))
+        throw "Error: Clothing Item id is not valid";
+      const clothingItem = await clothesData.getClothingItemById(
+        xss(req.params.id)
+      );
       if (clothingItem) {
         return res.status(200).render("pages/single/clothingEdit", {
           title: "Edit Clothing Item",
@@ -153,8 +156,9 @@ router
     const data = req.body;
     try {
       if (!data) throw "Error: Nothing was entered";
-      if (!req.session.user) throw 'Error: No user is logged in';
-      if (!ObjectId.isValid(req.params.id)) throw "Error: Clothing Item id is not valid";
+      if (!req.session.user) throw "Error: No user is logged in";
+      if (!ObjectId.isValid(req.params.id))
+        throw "Error: Clothing Item id is not valid";
       data.name = validate.checkTextInput(data.name, "Clothing Name");
       if (req.file)
         req.file.filename = validate.checkFileInput(req.file.filename, "Image");
@@ -184,7 +188,9 @@ router
       data.styles = validate.checkListInput(data.styles, "Styles");
       if (data.brand) data.brand = validate.checkTextInput(data.brand, "Brand");
     } catch (e) {
-      const clothingItem = await clothesData.getClothingItemById(xss(req.params.id));
+      const clothingItem = await clothesData.getClothingItemById(
+        xss(req.params.id)
+      );
       if (clothingItem) {
         return res.status(400).render("pages/single/clothingEdit", {
           title: "Edit Clothing Item",
@@ -212,9 +218,9 @@ router
           xss(req.file.filename),
           xss(data.type),
           xss(data.size),
-          (data["colors-patterns"]),
-          (data.seasons),
-          (data.styles),
+          data["colors-patterns"],
+          data.seasons,
+          data.styles,
           xss(data.brand),
           xss(req.session.user.username)
         );
@@ -225,9 +231,9 @@ router
           null,
           xss(data.type),
           xss(data.size),
-          (data["colors-patterns"]),
-          (data.seasons),
-          (data.styles),
+          data["colors-patterns"],
+          data.seasons,
+          data.styles,
           xss(data.brand),
           xss(req.session.user.username)
         );
@@ -239,7 +245,9 @@ router
         throw "Error: Failed to add Clothing Item";
       }
     } catch (e) {
-      const clothingItem = await clothesData.getClothingItemById(xss(req.params.id));
+      const clothingItem = await clothesData.getClothingItemById(
+        xss(req.params.id)
+      );
       if (clothingItem) {
         return res.status(500).render("pages/single/clothingEdit", {
           title: "Edit Clothing Item",
@@ -261,8 +269,11 @@ router
 
 router.route("/view/:id").get(async (req, res) => {
   try {
-    if (!ObjectId.isValid(req.params.id)) throw "Error: Clothing Item id is not valid";
-    const clothingItem = await clothesData.getClothingItemById(xss(req.params.id));
+    if (!ObjectId.isValid(req.params.id))
+      throw "Error: Clothing Item id is not valid";
+    const clothingItem = await clothesData.getClothingItemById(
+      xss(req.params.id)
+    );
     if (clothingItem) {
       return res.status(200).render("pages/single/clothingDetails", {
         title: "Clothing Details",
@@ -284,14 +295,17 @@ router.route("/view/:id").get(async (req, res) => {
 
 router.route("/delete/:id").delete(async (req, res) => {
   try {
-    if (!req.session.user) throw 'Error: No user is logged in';
-    if (!ObjectId.isValid(req.params.id)) throw "Error: Clothing Item id is not valid";
-    const result = await clothesData.deleteClothingItem(xss(req.params.id), xss(req.session.user.username));
-    if (result.result == 'success') {
+    if (!req.session.user) throw "Error: No user is logged in";
+    if (!ObjectId.isValid(req.params.id))
+      throw "Error: Clothing Item id is not valid";
+    const result = await clothesData.deleteClothingItem(
+      xss(req.params.id),
+      xss(req.session.user.username)
+    );
+    if (result.result == "success") {
       return res.json(result);
-    }
-    else {
-      throw 'Error: An error occurred deleting the Clothing Item';
+    } else {
+      throw "Error: An error occurred deleting the Clothing Item";
     }
   } catch (e) {
     return res.json({ result: e });

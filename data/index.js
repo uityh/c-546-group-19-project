@@ -13,5 +13,5 @@ module.exports = {
   clothes: clothesData,
   outfits: outfitsData,
   account: accountData,
-  detailed:detailedData
+  detailed: detailedData,
 };

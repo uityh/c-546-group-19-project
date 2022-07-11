@@ -1,81 +1,83 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    
-    <link rel="stylesheet" href="/public/styles/main_styles.css">
+  <head>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="/public/styles/main_styles.css" />
     {{#if stylesheet}}
-        <link rel="stylesheet" href="{{stylesheet}}">
+      <link rel="stylesheet" href="{{stylesheet}}" />
     {{/if}}
-    <link rel="icon" type="image/x-icon" href="/public/images/favicon.ico">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet"/>
+    <link rel="icon" type="image/x-icon" href="/public/images/favicon.ico" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css"
+      rel="stylesheet"
+    />
     <title>{{title}}</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <div class="topnav">
-            {{#if homePage}}
-            <a class="active" href="/home">Home</a>
-            {{else}}
-            <a href="/home">Home</a>
-            {{/if}}
-            {{#if clothesPage}}
-            <a class="active" href="/clothes">My Clothes</a>
-            {{else}}
-            <a href="/clothes">My Clothes</a>
-            {{/if}}
-            {{#if outfitsPage}}
-            <a class="active" href="/outfits">My Outfits</a>
-            {{else}}
-            <a href="/outfits">My Outfits</a>
-            {{/if}}
-            {{#if statsPage}}
-            <a class="active" href="/">Statistics</a>
-            {{else}}
-            <a href="/stats">Statistics</a>
-            {{/if}}
-            {{#if profPage}}
-            <a class="active" href="/profile">Profile</a>
-            {{else}}
-            <a href="/profile">Profile</a>
-            {{/if}}
+      <div class="topnav">
+        {{#if homePage}}
+          <a class="active" href="/home">Home</a>
+        {{else}}
+          <a href="/home">Home</a>
+        {{/if}}
+        {{#if clothesPage}}
+          <a class="active" href="/clothes">My Clothes</a>
+        {{else}}
+          <a href="/clothes">My Clothes</a>
+        {{/if}}
+        {{#if outfitsPage}}
+          <a class="active" href="/outfits">My Outfits</a>
+        {{else}}
+          <a href="/outfits">My Outfits</a>
+        {{/if}}
+        {{#if statsPage}}
+          <a class="active" href="/">Statistics</a>
+        {{else}}
+          <a href="/stats">Statistics</a>
+        {{/if}}
+        {{#if profPage}}
+          <a class="active" href="/profile">Profile</a>
+        {{else}}
+          <a href="/profile">Profile</a>
+        {{/if}}
 
-            {{#if calPage}}
-            <a class="active" href="/calendar">Calendar</a>
-            {{else}}
-            <a href="/calendar">Calendar</a>
-            {{/if}}
- 
-            {{#if not_logged_in}}
-            <a href="/account/signup">Signup</a>
-            <a href="/account/login">Login</a>
-            {{else}}
-            <a href="/account/logout">Logout</a>
-            {{/if}}
+        {{#if calPage}}
+          <a class="active" href="/calendar">Calendar</a>
+        {{else}}
+          <a href="/calendar">Calendar</a>
+        {{/if}}
 
-            {{!-- {{#if not_logged_in}}
-            <a href="/account/signup">Signup</a>
-            <a href="/account/login">Login</a>
-            {{/if}}
+        {{#if not_logged_in}}
+          <a href="/account/signup">Signup</a>
+          <a href="/account/login">Login</a>
+        {{else}}
+          <a href="/account/logout">Logout</a>
+        {{/if}}
 
-            {{#unless not_logged_in}}
-            <a href="/account/logout">Logout</a>
-            {{/unless}} --}}
-        </div>
+      </div>
     </header>
     <main>
-        {{{body}}}
+      {{{body}}}
     </main>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-    crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/288bd44038.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/288bd44038.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"
+    ></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {{#if script}}
-    <script src="{{script}}"></script>
+      <script src="{{script}}"></script>
     {{/if}}
-</body>
+  </body>
 
 </html>

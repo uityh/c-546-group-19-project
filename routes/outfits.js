@@ -6,7 +6,7 @@ const gen_outfitData = require("../data/gen_outfit");
 const outfitsData = require("../data/outfits");
 const clothesData = require("../data/clothes");
 const accountData = require("../data/account");
-const xss = require('xss');
+const xss = require("xss");
 
 //Middleware
 router.use("/", (req, res, next) => {
@@ -63,7 +63,6 @@ router
   .post(async (req, res) => {
     const data = req.body;
     try {
-      
       if (!data) throw "Error: Nothing was entered";
       if (!data.name) throw "Error: Outfit Name is Required";
       if (!data.name.trim()) throw "Error: Outfit Name is Required";
@@ -79,19 +78,20 @@ router
 
     try {
       let seasons = outfitValidation.checkSeasons(data.season);
-      let styles = outfitValidation.checkStyles(data.styles)
-      let color_patterns = clothesValidation.checkListInput(data["colors-patterns"], "color-patterns")
-      
+      let styles = outfitValidation.checkStyles(data.styles);
+      let color_patterns = clothesValidation.checkListInput(
+        data["colors-patterns"],
+        "color-patterns"
+      );
+
       let result = await gen_outfitData.generateOutfit(
-        (data["colors-patterns"]),
-        (data.season),
-        (data.styles),
+        data["colors-patterns"],
+        data.season,
+        data.styles,
         xss(req.session.user.username)
       );
       result = result.map((res) => res._id);
-      let clothingItems = await clothesData.getClothingbyIds(
-        result
-      );
+      let clothingItems = await clothesData.getClothingbyIds(result);
 
       if (clothingItems.length < 2) {
         throw "Error: Could not find valid matches for query, try using more common search terms";
@@ -102,8 +102,8 @@ router
         result,
         xss("private"),
         xss(data.name),
-        (data.season),
-        (data.styles)
+        data.season,
+        data.styles
       );
 
       if (new_outfit) {
@@ -184,15 +184,15 @@ router.route("/new").post(async (req, res) => {
     });
   }
   try {
-    let clothesIdArr = await clothesData.getClothingIdsByImages((images));
-    let isValid = await clothesData.checkTypes((clothesIdArr));
+    let clothesIdArr = await clothesData.getClothingIdsByImages(images);
+    let isValid = await clothesData.checkTypes(clothesIdArr);
     let newOutfit = await outfitsData.addNewOutfits(
       xss(req.session.user.username),
-      (clothesIdArr),
+      clothesIdArr,
       xss(status),
       xss(name),
-      (seasons),
-      (styles)
+      seasons,
+      styles
     );
     if (!newOutfit) throw "Error: could not create new outfit";
     let outfitItems = await outfitsData.getUserOutfits(
@@ -281,15 +281,15 @@ router.route("/edit/:id").post(async (req, res) => {
     });
   }
   try {
-    let clothesIdArr = await clothesData.getClothingIdsByImages((images));
+    let clothesIdArr = await clothesData.getClothingIdsByImages(images);
     let updateInfo = await outfitsData.updateUserOutfit(
       xss(req.session.user.username),
       xss(id),
-      (clothesIdArr),
+      clothesIdArr,
       xss(status),
       xss(name),
-      (seasons),
-      (styles)
+      seasons,
+      styles
     );
     if (!updateInfo.updated) throw "Error: could not update outfit";
     let outfitItems = await outfitsData.getUserOutfits(

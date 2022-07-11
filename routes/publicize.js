@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const data = require("../data");
 const outfitsData = data.outfits;
-const xss = require('xss');
+const xss = require("xss");
 
 //Middleware
 router.use("/", (req, res, next) => {
@@ -13,7 +13,9 @@ router.use("/", (req, res, next) => {
 });
 router.route("/").patch(async (req, res) => {
   try {
-    let outfits = await outfitsData.getUserOutfits(xss(req.session.user.username));
+    let outfits = await outfitsData.getUserOutfits(
+      xss(req.session.user.username)
+    );
     if (outfits.length === 0)
       throw "Error: user does not have any outfits to make public";
 
