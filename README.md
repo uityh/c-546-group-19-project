@@ -72,13 +72,6 @@ Upon loading the website, you will see our home page with all the public outfits
 
 - Log into admin accounts to delete comments on outfits that do not follow community guidelines.
 
-<<<<<<< HEAD
-Note: The images users upload on the live hosted version are stored on the Heroku server. If the server is run locally, you may not be able to see the images stored on Heroku.
-
-=======
-
-> > > > > > > 8310c3f5256eee9af75a6178fc0208369552a1f0
-
 ## GitHub Link
 
 https://github.com/LDomadia/c-546-group-19-project
